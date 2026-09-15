@@ -1,5 +1,3 @@
-using System.Data.Common;
-
 namespace scrap_depot.Models;
 
 public static class ScrapData
