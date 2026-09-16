@@ -7,6 +7,6 @@ public class Scrap
     public String Description { get; set; } = "";
     public int Credits { get; set; }
     public int Weight { get; set; }
-    public int Depositied { get; set; }
+    public int Deposited { get; set; }
 
 }

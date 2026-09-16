@@ -3,10 +3,20 @@
     ViewData["Title"] = "Scrap Collected";
 }
 
-    <ul>
+    <ul class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var scrap in Model)
         {
-            <li><a href="/Scrap/Details/@scrap.Id">@scrap.Name</a> — @scrap.Depositied deposited.</li>
+            <div class="col">
+                <partial name="_ScrapCard" model="scrap" />
+                <li><a href="/Scrap/Details/@scrap.Id">@scrap.Name</a> — @scrap.Deposited deposited.</li>
+            </div>
+            
         }
     </ul>
-</div>
+
+    <div class="">
+        @foreach (var scrap in Model)
+        {
+            
+        }
+    </div>

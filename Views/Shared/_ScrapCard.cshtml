@@ -1,0 +1,14 @@
+@model Scrap
+
+<div class="card cryptid-card h-100">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@Model.Deposited Deposited</h6>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text">Worth roughly C @Model.Credits each, depending on condition.</p>
+        
+    </div>
+    <div class="card-footer">
+        <a href="/Cryptids/Details/@Model.Id">Details</a>
+    </div>
+</div>
