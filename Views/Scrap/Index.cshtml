@@ -1,4 +1,8 @@
 ﻿@model List<Scrap>
+@{
+    ViewData["Title"] = "Scrap Collected";
+}
+
     <ul>
         @foreach (var scrap in Model)
         {
@@ -6,4 +10,3 @@
         }
     </ul>
 </div>
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
