@@ -3,8 +3,9 @@
     ViewData["Title"] = "Scrap Collected";
 }
 
-    <div>
-        <p>You have collected x credits.</p>
+    <div class="d-flex justify-content-between">
+        <span>You have collected x credits.</span>
+        <a asp-action="Create" class="btn btn-primary mb-4">＋ Register scrap item</a>
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var scrap in Model)

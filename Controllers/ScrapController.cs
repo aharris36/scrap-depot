@@ -18,4 +18,9 @@ public class ScrapController : Controller
         }
         return View(ScrapData.All.FirstOrDefault(c => c.Id == id));
     }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
 }
