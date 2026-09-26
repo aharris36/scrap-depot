@@ -11,7 +11,7 @@
 
     <div class="mb-3">
         <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" />
+        <input asp-for="Name" class="form-control" minlength=2 />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
@@ -37,3 +37,7 @@
     <button type="submit" class="btn btn-primary">File it</button>
     <a asp-action="Index" class="btn btn-link">Cancel</a>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
