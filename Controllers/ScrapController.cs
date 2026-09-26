@@ -23,4 +23,19 @@ public class ScrapController : Controller
     {
         return View();
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(Scrap scrap)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(scrap);
+        }
+        scrap.Id = ScrapData.All.Max(c => c.Id) + 1;
+        ScrapData.All.Add(scrap);
+
+        return RedirectToAction(nameof(Index));
+    }
+    
 }
