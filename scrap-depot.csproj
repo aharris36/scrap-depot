@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>scrap_depot</RootNamespace>
+    <UserSecretsId>a94827a3-7444-4108-8969-58109126f7e3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

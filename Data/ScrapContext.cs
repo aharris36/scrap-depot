@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Models;
+using scrap_depot.Models;
 
-namespace Data;
+namespace scrap_depot.Data;
 
 public class ScrapContext : DbContext
 {
-    public ScrapContext(DbContextOptions<CurbsideContext> options) : base(options)
+    public ScrapContext(DbContextOptions<ScrapContext> options) : base(options)
     {
     }
 
