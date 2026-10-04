@@ -1,22 +1,31 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using scrap_depot.Data;
 using scrap_depot.Models;
 
 namespace scrap_depot.Controllers;
 
 public class ScrapController : Controller
 {
+
+    private readonly ScrapContext _context;
+
+    public ScrapController(ScrapContext context)
+    {
+        _context = context;
+    }
     public IActionResult Index()
     {
-        return View(ScrapData.All);
+        return View(_context.Scrap.ToList());
     }
     public IActionResult Details(int id)
     {
-        if (ScrapData.All.FirstOrDefault(c => c.Id == id) == null)
+        var scrapItem = _context.Scrap.FirstOrDefault(c => c.Id == id);
+        if (scrapItem == null)
         {
             return NotFound();
         }
-        return View(ScrapData.All.FirstOrDefault(c => c.Id == id));
+        return View(scrapItem);
     }
 
     public IActionResult Create()
@@ -26,14 +35,15 @@ public class ScrapController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Scrap scrap)
+    public IActionResult Create(Scrap scrapItem)
     {
         if (!ModelState.IsValid)
         {
-            return View(scrap);
+            return View(scrapItem);
         }
-        scrap.Id = ScrapData.All.Max(c => c.Id) + 1;
-        ScrapData.All.Add(scrap);
+
+        _context.Scrap.Add(scrapItem);
+        _context.SaveChanges();
 
         return RedirectToAction(nameof(Index));
     }
