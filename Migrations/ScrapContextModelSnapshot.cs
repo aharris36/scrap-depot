@@ -16,7 +16,7 @@ namespace scrap_depot.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -44,6 +44,9 @@ namespace scrap_depot.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("TwoHanded")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
@@ -59,6 +62,7 @@ namespace scrap_depot.Migrations
                             Deposited = 0,
                             Description = "A large metal bolt.",
                             Name = "Big Bolt",
+                            TwoHanded = false,
                             Weight = 19
                         },
                         new
@@ -68,6 +72,7 @@ namespace scrap_depot.Migrations
                             Deposited = 0,
                             Description = "A large geared axle made of metal.",
                             Name = "Large Axel",
+                            TwoHanded = false,
                             Weight = 16
                         },
                         new
@@ -77,6 +82,7 @@ namespace scrap_depot.Migrations
                             Deposited = 0,
                             Description = "A flat-bottomed round glass flask.",
                             Name = "Flask",
+                            TwoHanded = false,
                             Weight = 16
                         },
                         new
@@ -86,6 +92,7 @@ namespace scrap_depot.Migrations
                             Deposited = 0,
                             Description = "A detached, octaganal sign reading 'STOP'",
                             Name = "Stop Sign",
+                            TwoHanded = false,
                             Weight = 29
                         },
                         new
@@ -95,6 +102,7 @@ namespace scrap_depot.Migrations
                             Deposited = 0,
                             Description = "A yellow rubber duck.",
                             Name = "Rubber Ducky",
+                            TwoHanded = false,
                             Weight = 0
                         });
                 });

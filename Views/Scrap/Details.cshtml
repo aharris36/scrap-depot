@@ -6,3 +6,6 @@
 <h4>@Model.Name</h4>
 <p>@Model.Description</p>
 <p>@Model.Deposited Deposited.</p>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mb-4">Edit this scrap item</a>
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mb-4">Delete this scrap item</a>

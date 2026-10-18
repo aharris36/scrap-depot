@@ -1,0 +1,51 @@
+@model Scrap
+@{
+    ViewData["Title"] = "Update an item";
+}
+
+<h1>Adjust scrap item</h1>
+<p class="text-muted">If you believe a scrap item in the database has either missing or incorrect information, please update it below.</p>
+
+<form asp-action="Edit" method="post" class="col-md-6">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" minlength=2 />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Credits" class="form-label"> </label>
+        <input asp-for="Credits" class="form-control" />
+        <span asp-validation-for="Credits" class="text-danger"></span>
+        <div class="badge bg-warning">Enter the value given by your Company Echo Scanner.</div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Weight" class="form-label"></label>
+        <input asp-for="Weight" class="form-control" />
+        <span asp-validation-for="Weight" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="TwoHanded" class="form-check-input" type="checkbox" />
+        <label asp-for="TwoHanded" class="form-check-label"></label>
+        <span asp-validation-for="TwoHanded" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update item</button>
+    <a asp-action="Index" class="btn btn-link">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

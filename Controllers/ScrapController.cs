@@ -69,7 +69,7 @@ public class ScrapController : Controller
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Credits,Weight,Deposited")] Scrap scrap)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Credits,Weight,Deposited,TwoHanded")] Scrap scrap)
         {
             if (id != scrap.Id)
             {

@@ -15,5 +15,6 @@ public class Scrap
     [Range(0,999)]
     public int Weight { get; set; }
     public int Deposited { get; set; }
+    public Boolean TwoHanded { get; set; }
 
 }
