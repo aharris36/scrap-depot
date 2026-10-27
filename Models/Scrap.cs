@@ -17,4 +17,6 @@ public class Scrap
     public int Deposited { get; set; }
     public Boolean TwoHanded { get; set; }
 
+    public ICollection<Expedition> Expeditions { get; set; } = new List<Expedition>();
+
 }

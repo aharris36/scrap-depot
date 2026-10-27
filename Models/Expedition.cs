@@ -12,8 +12,10 @@ public class Expedition
     public String Moon { get; set; } = "";
     [StringLength(500)]
     public String Notes { get; set; } = "";
+    
 
     [Display(Name = "Scrap Collected")]
-    public List<Int> ScrapIds { get; set; } = new List<int>();
-    public List<Scrap> ScrapCollected { get; set; }
+    public List<int> ScrapIds { get; set; } = new List<int>();
+    public ICollection<Scrap> ScrapCollected { get; set; } = new List<Scrap>();
+
 }

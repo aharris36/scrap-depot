@@ -21,6 +21,51 @@ namespace scrap_depot.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ExpeditionScrap", b =>
+                {
+                    b.Property<int>("ExpeditionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ScrapCollectedId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ExpeditionsId", "ScrapCollectedId");
+
+                    b.HasIndex("ScrapCollectedId");
+
+                    b.ToTable("ExpeditionScrap");
+                });
+
+            modelBuilder.Entity("scrap_depot.Models.Expedition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CrewNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Moon")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.PrimitiveCollection<string>("ScrapIds")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Expeditions");
+                });
+
             modelBuilder.Entity("scrap_depot.Models.Scrap", b =>
                 {
                     b.Property<int>("Id")
@@ -105,6 +150,21 @@ namespace scrap_depot.Migrations
                             TwoHanded = false,
                             Weight = 0
                         });
+                });
+
+            modelBuilder.Entity("ExpeditionScrap", b =>
+                {
+                    b.HasOne("scrap_depot.Models.Expedition", null)
+                        .WithMany()
+                        .HasForeignKey("ExpeditionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("scrap_depot.Models.Scrap", null)
+                        .WithMany()
+                        .HasForeignKey("ScrapCollectedId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

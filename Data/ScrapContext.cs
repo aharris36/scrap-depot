@@ -8,8 +8,10 @@ public class ScrapContext : DbContext
     public ScrapContext(DbContextOptions<ScrapContext> options) : base(options)
     {
     }
+    
 
     public DbSet<Scrap> Scrap => Set<Scrap>();
+    public DbSet<Expedition> Expeditions => Set<Expedition>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,5 +22,11 @@ public class ScrapContext : DbContext
             new Scrap{Id = 4, Name = "Stop Sign", Description = "A detached, octaganal sign reading 'STOP'", Credits = 36, Weight = 29, Deposited = 0},
             new Scrap{Id = 5, Name = "Rubber Ducky", Description = "A yellow rubber duck.", Credits = 61, Weight = 0, Deposited = 0}
         );
+
+        
+        modelBuilder.Entity<Expedition>()
+        .HasMany(c => c.ScrapCollected)
+        .WithMany(c => c.Expeditions);
+        
     }
 }
