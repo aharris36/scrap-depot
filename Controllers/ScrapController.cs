@@ -21,7 +21,9 @@ public class ScrapController : Controller
     }
     public IActionResult Details(int id)
     {
-        var scrapItem = _context.Scrap.FirstOrDefault(c => c.Id == id);
+        var scrapItem = _context.Scrap
+            .Include(c => c.Expeditions)
+            .FirstOrDefault(c => c.Id == id);
         if (scrapItem == null)
         {
             return NotFound();

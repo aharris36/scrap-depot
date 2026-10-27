@@ -7,5 +7,24 @@
 <p>@Model.Description</p>
 <p>@Model.Deposited Deposited.</p>
 
+<h2 class="h5 mt-4">Recent Expeditions</h2>
+
+@if (Model.Expeditions.Count > 0)
+{
+    <ul class="list-group mb-4">
+        @foreach (var expedition in Model.Expeditions)
+        {
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Crew @expedition.CrewNumber - @expedition.ExpeditionDate</span>
+                <span>From site on @expedition.Moon</span>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p class="text-muted">This item has yet to be deposited.</p>
+}
+
 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mb-4">Edit this scrap item</a>
 <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mb-4">Delete this scrap item</a>

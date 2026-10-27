@@ -12,6 +12,9 @@ public class Expedition
     public String Moon { get; set; } = "";
     [StringLength(500)]
     public String Notes { get; set; } = "";
+
+    [DataType(DataType.Date)]
+    public DateTime ExpeditionDate;
     
 
     [Display(Name = "Scrap Collected")]
