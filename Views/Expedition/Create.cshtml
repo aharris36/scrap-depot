@@ -1,4 +1,5 @@
-@model Expedition
+@using scrap_depot.ViewModels
+@model ExpeditionFormViewModel
 @{
     ViewData["Title"] = "Add new item";
 }
@@ -10,29 +11,36 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="mb-3">
-        <label asp-for="CrewNumber" class="form-label"></label>
-        <input asp-for="CrewNumber" class="form-control" minlength=2 />
-        <span asp-validation-for="CrewNumber" class="text-danger"></span>
+        <label asp-for="Expedition.CrewNumber" class="form-label"></label>
+        <input asp-for="Expedition.CrewNumber" class="form-control" minlength=2 />
+        <span asp-validation-for="Expedition.CrewNumber" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Moon" class="form-label"></label>
-        <input asp-for="Moon" class="form-control" />
-        <span asp-validation-for="Moon" class="text-danger"></span>
+        <label asp-for="Expedition.Moon" class="form-label"></label>
+        <input asp-for="Expedition.Moon" class="form-control" />
+        <span asp-validation-for="Expedition.Moon" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="ExpeditionDate" class="form-label"></label>
-        <input asp-for="ExpeditionDate" class="form-control" />
-        <span asp-validation-for="ExpeditionDate" class="text-danger"></span>
+        <label asp-for="Expedition.ExpeditionDate" class="form-label"></label>
+        <input asp-for="Expedition.ExpeditionDate" class="form-control" />
+        <span asp-validation-for="Expedition.ExpeditionDate" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Notes" class="form-label"></label>
-        <input asp-for="Notes" class="form-control" />
-        <span asp-validation-for="Notes" class="text-danger"></span>
+        <label asp-for="Expedition.Notes" class="form-label"></label>
+        <input asp-for="Expedition.Notes" class="form-control" />
+        <span asp-validation-for="Expedition.Notes" class="text-danger"></span>
     </div>
 
+    <!--this sucks!-->
+    <div class="mb-3">
+        <label asp-for="Expedition.ScrapIds" class="form-label"></label>
+        <select asp-for="Expedition.ScrapIds" asp-items="Model.ScrapChoices" class="form-select" multiple>
+        </select>
+        <span asp-validation-for="Expedition.ScrapIds" class="text-danger"></span>
+    </div>
 
     <button type="submit" class="btn btn-primary">File Expedition</button>
     <a asp-controller="Home" asp-action="Index" class="btn btn-link">Cancel</a>
