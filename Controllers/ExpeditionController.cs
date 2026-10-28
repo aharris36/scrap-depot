@@ -34,7 +34,7 @@ public class ExpeditionController : Controller
     {
         if (!ModelState.IsValid)
         {
-            form.ScrapChoices = ScrapChoices(form.Expedition.ScrapIds);   // rebuild it
+            form.ScrapChoices = ScrapChoices();   // rebuild it
             return View(form);
         }
 
@@ -45,13 +45,13 @@ public class ExpeditionController : Controller
     }
 
     // One place that knows how to build the list, because two actions need it.
-
-    /**
-    private SelectList ScrapChoices(int? selected) =>
-        new SelectList(_context.Scrap.OrderBy(t => t.Name).ToList(), "Id", "Name", selected);
-        */
+    
+    private SelectList ScrapChoices() =>
+        new SelectList(_context.Scrap.OrderBy(t => t.Name).ToList(), "Id", "Name");
+        
 
     //ai fix
+    /**
     private SelectList ScrapChoices(IEnumerable<int>? selectedIds = null)
         {
             return new SelectList(
@@ -60,4 +60,5 @@ public class ExpeditionController : Controller
                 "Name",
                 selectedIds);
         }
+        */
 }
