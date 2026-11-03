@@ -3,9 +3,12 @@
     ViewData["Title"] = Model.Name;
 }
 
-<h4>@Model.Name</h4>
-<p>@Model.Description</p>
-<p>@Model.Deposited Deposited.</p>
+<h2>@Model.Name</h2>
+<div class="">
+    <p>@Model.Description</p>
+    <p>@Model.Deposited Deposited.</p>
+</div>
+
 
 <h2 class="h5 mt-4">Recent Expeditions</h2>
 
@@ -26,5 +29,5 @@ else
     <p class="text-muted">This item has yet to be deposited.</p>
 }
 
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mb-4">Edit this scrap item</a>
-<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mb-4">Delete this scrap item</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mb-2">Edit this scrap item</a>
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mb-2">Delete this scrap item</a>
