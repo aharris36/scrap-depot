@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using scrap_depot.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace scrap_depot.Data;
 
-public class ScrapContext : DbContext
+public class ScrapContext : IdentityDbContext<EmployeeUser>
 {
     public ScrapContext(DbContextOptions<ScrapContext> options) : base(options)
     {
@@ -15,6 +16,9 @@ public class ScrapContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Scrap>().HasData(
             new Scrap{Id = 1, Name = "Big Bolt", Description = "A large metal bolt.", Credits = 25, Weight = 19, Deposited = 0},
             new Scrap{Id = 2, Name = "Large Axel", Description = "A large geared axle made of metal.", Credits = 46, Weight = 16, Deposited = 0},

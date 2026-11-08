@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using scrap_depot.Data;
+using Microsoft.AspNetCore.Identity;
+using scrap_depot.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ScrapContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<EmployeeUser, IdentityRole>()
+    .AddEntityFrameworkStores<ScrapContext>();    
 
 var app = builder.Build();
 
@@ -19,6 +24,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStatusCodePagesWithReExecute("/Home/Missing");
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
