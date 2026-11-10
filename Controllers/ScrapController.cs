@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using scrap_depot.Data;
@@ -6,6 +7,7 @@ using scrap_depot.Models;
 
 namespace scrap_depot.Controllers;
 
+[Authorize]
 public class ScrapController : Controller
 {
 
@@ -15,10 +17,12 @@ public class ScrapController : Controller
     {
         _context = context;
     }
+    [AllowAnonymous]
     public IActionResult Index()
     {
         return View(_context.Scrap.ToList());
     }
+    [AllowAnonymous]
     public IActionResult Details(int id)
     {
         var scrapItem = _context.Scrap

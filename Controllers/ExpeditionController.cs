@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using scrap_depot.ViewModels;
 
 namespace scrap_depot.Controllers;
 
+[Authorize]
 public class ExpeditionController : Controller
 {
     private readonly ScrapContext _context;
