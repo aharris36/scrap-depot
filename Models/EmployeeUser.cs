@@ -8,4 +8,6 @@ namespace scrap_depot.Models;
 public class EmployeeUser : IdentityUser
 {
     public int CrewNumber { get; set; }
+    
+    public string FirstName { get; set; } = "";
 }

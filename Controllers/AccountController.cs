@@ -32,7 +32,7 @@ public class AccountController : Controller
             return View(form);
         }
 
-        var EmployeeUser = new EmployeeUser { UserName = form.Email, Email = form.Email, CrewNumber = form.CrewNumber };
+        var EmployeeUser = new EmployeeUser { UserName = form.Email, Email = form.Email, CrewNumber = form.CrewNumber, FirstName = form.FirstName };
 
         var result = await _userManager.CreateAsync(EmployeeUser, form.Password);
 
@@ -49,7 +49,6 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
-    /*
     // GET /Account/Login — and where [Authorize] sends a visitor, with the
     // page they were trying to reach in ?ReturnUrl=
     public IActionResult Login(string? returnUrl = null)
@@ -70,12 +69,10 @@ public class AccountController : Controller
         }
 
         var result = await _signInManager.PasswordSignInAsync(
-            form.Email, form.Password, form.ReEmployeeUserMe, lockoutOnFailure: false);
+            form.Email, form.Password, form.RememberMe, lockoutOnFailure: false);
 
         if (!result.Succeeded)
         {
-            // One message for both mistakes. Saying "wrong password" would tell
-            // a stranger that the email has an account.
             ModelState.AddModelError("", "That email and password don't match a EmployeeUser.");
             return View(form);
         }
@@ -83,7 +80,6 @@ public class AccountController : Controller
         // LocalRedirect refuses a ReturnUrl that points at another site.
         return LocalRedirect(returnUrl ?? "/");
     }
-    */
 
     // POST /Account/Logout — a POST, never a link. Any page on the internet
     // can make a browser send a GET.

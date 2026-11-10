@@ -16,6 +16,10 @@ public class RegisterViewModel
     public int CrewNumber { get; set; }
 
     [Required]
+    [Display(Name = "First Name")]
+    public string FirstName { get; set; } = "";
+
+    [Required]
     [DataType(DataType.Password)]
     public string Password { get; set; } = "";
 
