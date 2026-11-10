@@ -7,4 +7,5 @@ namespace scrap_depot.Models;
 // is where the Registry's own facts about a member will go.
 public class EmployeeUser : IdentityUser
 {
+    public int CrewNumber { get; set; }
 }
