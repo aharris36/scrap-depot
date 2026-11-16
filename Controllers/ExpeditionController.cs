@@ -9,7 +9,7 @@ using scrap_depot.ViewModels;
 
 namespace scrap_depot.Controllers;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class ExpeditionController : Controller
 {
     private readonly ScrapContext _context;

@@ -7,7 +7,7 @@ using scrap_depot.Models;
 
 namespace scrap_depot.Controllers;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class ScrapController : Controller
 {
 
