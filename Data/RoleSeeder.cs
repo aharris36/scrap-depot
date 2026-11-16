@@ -8,7 +8,7 @@ public static class RoleSeeder
     public static async Task SeedAsync(IServiceProvider services)
     {
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-        var userManager = services.GetRequiredService<UserManager<Member>>();
+        var userManager = services.GetRequiredService<UserManager<EmployeeUser>>();
         var config = services.GetRequiredService<IConfiguration>();
 
         if (!await roleManager.RoleExistsAsync("Admin"))

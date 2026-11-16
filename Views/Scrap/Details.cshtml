@@ -29,5 +29,8 @@ else
     <p class="text-muted">This item has yet to be deposited.</p>
 }
 
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mb-2">Edit this scrap item</a>
-<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mb-2">Delete this scrap item</a>
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mb-2">Edit this scrap item</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mb-2">Delete this scrap item</a>
+}

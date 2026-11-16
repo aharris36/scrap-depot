@@ -9,7 +9,8 @@ using scrap_depot.ViewModels;
 
 namespace scrap_depot.Controllers;
 
-[Authorize(Roles = "Admin")]
+//this one requires you to be logged in but should allow creation from any user
+[Authorize]
 public class ExpeditionController : Controller
 {
     private readonly ScrapContext _context;

@@ -4,9 +4,15 @@
 }
 
     <div class="d-flex justify-content-between">
-        <!--if/when i actually implement this, i think it just vanishes without an account? -->
+        <!--tbd: change this conditional to if the user's crew number is not null -->
+    @if (User.Identity?.IsAuthenticated == true)
+    {
         <span>Your crew have collected x credits.</span>
+    }
+    @if (User.IsInRole("Admin"))
+    {
         <a asp-action="Create" class="btn btn-primary mb-4">＋ Register scrap item</a>
+    }
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var scrap in Model)
