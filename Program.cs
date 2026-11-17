@@ -16,6 +16,12 @@ builder.Services.AddIdentity<EmployeeUser, IdentityRole>()
 
 var app = builder.Build();
 
+//actually seeds the roles. forgot this earlier
+using (var scope = app.Services.CreateScope())
+{
+    await RoleSeeder.SeedAsync(scope.ServiceProvider);
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
