@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using scrap_depot.Data;
 using scrap_depot.Models;
+using scrap_depot.DTO;
 
 namespace scrap_depot.Controllers;
 
@@ -19,16 +20,43 @@ public class ScrapApiController : ControllerBase
 
     // GET /api/trucks
     [HttpGet]
-    public async Task<List<Scrap>> GetAll()
+    public async Task<List<ScrapDTO>> GetAll()
     {
-        return await _context.Scrap.ToListAsync();
+        var scrap = await _context.Scrap
+            .Include(t => t.Expeditions)
+            .ToListAsync();
+
+        return scrap.Select(ToDto).ToList();
     }
 
-    // GET /api/cryptids/1
+    // GET /api/trucks/2
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Scrap>> GetOne(int id)
+    public async Task<ActionResult<ScrapDTO>> GetOne(int id)
     {
-        //include expeditions didn't seem to work
-        return await _context.Scrap.FirstAsync(c => c.Id == id);
+        var scrap = await _context.Scrap
+            .Include(t => t.Expeditions)
+            .FirstOrDefaultAsync(t => t.Id == id);
+
+        if (scrap == null)
+        {
+            return NotFound();
+        }
+
+        return ToDto(scrap);
     }
+
+    // inside TrucksApiController, at the bottom
+    private static ScrapDTO ToDto(Scrap scrap) => new ScrapDTO
+    {
+        Id = scrap.Id,
+        Name = scrap.Name,
+        Description = scrap.Description,
+        Credits = scrap.Credits,
+        Weight = scrap.Weight,
+        Deposited = scrap.Deposited,
+        TwoHanded = scrap.TwoHanded,
+        Expeditions = scrap.Expeditions
+            .Select(e => new ExpeditionDTO { Id = e.Id, CrewNumber = e.CrewNumber, Moon = e.Moon, Notes = e.Notes, ExpeditionDate = e.ExpeditionDate })
+            .ToList()
+    };
 }

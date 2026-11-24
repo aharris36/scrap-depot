@@ -42,5 +42,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapGet("/api/scrap/count", async (ScrapContext db) =>
+    new { count = await db.Scrap.CountAsync() });
 
 app.Run();
